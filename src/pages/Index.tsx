@@ -7,7 +7,7 @@ import CircleIntersection from '../components/CircleIntersection';
 import FeaturesSection from '../components/FeaturesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import CtaSection from '../components/CtaSection';
-import PartnersSection from '../components/PartnersSection';
+import EmployabilityTrendsSection from '../components/References';
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -17,7 +17,7 @@ const Index = () => {
         <CircleIntersection />
         <FeaturesSection />
         <TestimonialsSection />
-        <PartnersSection />
+        <EmployabilityTrendsSection/>
         <CtaSection />
       </main>
       <Footer />
