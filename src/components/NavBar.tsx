@@ -104,7 +104,7 @@ const NavBar: React.FC = () => {
         
         {/* Slide-in mobile menu */}
         <div
-          className={`fixed top-0 right-0 w-64 bg-white h-full shadow-lg transition-transform transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`fixed top-0 z-50 right-0 w-64 bg-white h-full shadow-lg transition-transform transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           style={{ transition: 'transform 0.3s ease-in-out' }}
         >
           <div className="py-6 px-4">
