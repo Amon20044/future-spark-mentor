@@ -184,16 +184,6 @@ const Assessment = () => {
                         <div className="h-8 bg-brand-red/20 rounded-md w-full"></div>
                       </div>
                       
-                      <h4 className="font-medium pt-2">Key Strengths</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="h-6 bg-gray-200 rounded-md w-full"></div>
-                        <div className="h-6 bg-gray-200 rounded-md w-full"></div>
-                        <div className="h-6 bg-gray-200 rounded-md w-full"></div>
-                        <div className="h-6 bg-gray-200 rounded-md w-full"></div>
-                      </div>
-                      
-                      <h4 className="font-medium pt-2">Astrological Insights</h4>
-                      <div className="h-20 bg-brand-yellow/20 rounded-md w-full"></div>
                     </div>
                   </div>
                 </div>
