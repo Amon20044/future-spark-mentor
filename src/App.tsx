@@ -9,14 +9,17 @@ import Services from "./pages/Services";
 import Assessment from "./pages/Assessment";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Swup from 'swup';
+import AlwaysShowLoaderAnimation from "./components/Loader";
 
 const queryClient = new QueryClient();
-
+const swup = new Swup();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <AlwaysShowLoaderAnimation/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

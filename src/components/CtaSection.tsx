@@ -15,7 +15,7 @@ const CtaSection: React.FC = () => {
             <Button size="lg" className="bg-white text-brand-blue hover:bg-gray-100">
               Start Free Assessment
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-white text-brand-blue hover:bg-white/10">
               Learn More About Our Process
             </Button>
           </div>

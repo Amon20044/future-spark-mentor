@@ -156,7 +156,7 @@ const Assessment = () => {
                     "Actionable steps to help you move forward"
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-brand-red mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-brand-red mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke={'blue'}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       <span>{item}</span>
@@ -164,7 +164,7 @@ const Assessment = () => {
                   ))}
                 </ul>
                 
-                <Button className="mt-8 bg-brand-red hover:bg-brand-redLight">
+                <Button className="mt-8 bg-brand-blue hover:bg-brand-blueLight">
                   View Sample Report
                 </Button>
               </div>
@@ -203,13 +203,13 @@ const Assessment = () => {
         </div>
         
         {/* CTA */}
-        <div className="bg-brand-red text-white py-16">
+        <div className="bg-brand-blue text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6">Begin Your Career Discovery Journey</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Take our AI-powered assessment today and unlock insights that will guide your educational and career decisions.
             </p>
-            <Button size="lg" className="bg-white text-brand-red hover:bg-gray-100">
+            <Button size="lg" className="bg-white text-brand-blue hover:bg-gray-100">
               Start Free Assessment
             </Button>
           </div>

@@ -7,16 +7,16 @@ const HeroSection: React.FC = () => {
     <div className="relative overflow-hidden bg-brand-light">
       <div className="container mx-auto px-4 py-20 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left">
+          <div className="text-left order-last lg:order-first">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="block">Discover Your</span>
-              <span className="gradient-heading">Perfect Career Path</span>
+              <span className="text-brand-blue">Perfect Career Path</span>
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-lg">
               Guiding students through personalized career assessment using AI, astrology, and expert counseling to unlock their true potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-brand-red hover:bg-brand-redLight">
+              <Button size="lg" className="bg-brand-blue hover:bg-brand-blueLight">
                 Take Free Assessment
               </Button>
               <Button size="lg" variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue/10">
@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative order-first lg:order-last">
             <div className="relative z-10 w-full h-full">
               {/* Hero image goes here */}
               <div className="aspect-[4/3] bg-gradient-to-br from-brand-blue/20 to-brand-cyan/20 rounded-2xl overflow-hidden flex items-center justify-center shadow-xl">

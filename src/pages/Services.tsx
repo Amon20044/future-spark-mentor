@@ -128,7 +128,7 @@ const Services = () => {
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Take the first step towards discovering your perfect career path today.
             </p>
-            <Button size="lg" className="bg-brand-red hover:bg-brand-redLight">
+            <Button size="lg" className="bg-brand-blue hover:bg-brand-blueLight">
               Schedule a Free Consultation
             </Button>
           </div>

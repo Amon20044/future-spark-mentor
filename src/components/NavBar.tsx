@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Home, List, Search, Mail } from 'lucide-react';
@@ -21,9 +20,11 @@ const NavBar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center">
-            <span className="text-xl font-bold bg-gradient-to-r from-brand-red via-brand-blue to-brand-cyan bg-clip-text text-transparent">
-              Frintor
-            </span>
+            <img
+              src='/logo.svg'
+              alt="Logo"
+              className="h-12 w-auto scale-[3] translate-y-2"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -38,7 +39,7 @@ const NavBar: React.FC = () => {
                 {item.label}
               </Link>
             ))}
-            <Button className="ml-4 bg-brand-red hover:bg-brand-redLight">
+            <Button className="ml-4 bg-brand-blue hover:bg-brand-blueLight">
               Get Started
             </Button>
           </div>
@@ -58,9 +59,18 @@ const NavBar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile menu, show/hide based on menu state */}
-        {isMenuOpen && (
-          <div className="md:hidden py-2">
+        {/* Mobile menu with sliding animation */}
+        <div 
+          className={`fixed inset-0 bg-gray-800 bg-opacity-50 md:hidden transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          onClick={toggleMenu} 
+        />
+        
+        {/* Slide-in mobile menu */}
+        <div
+          className={`fixed top-0 right-0 w-64 bg-white h-full shadow-lg transition-transform transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          style={{ transition: 'transform 0.3s ease-in-out' }}
+        >
+          <div className="py-6 px-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -73,12 +83,12 @@ const NavBar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 pb-3">
-              <Button className="w-full bg-brand-red hover:bg-brand-redLight">
+              <Button className="w-full bg-brand-blue hover:bg-brand-blueLight">
                 Get Started
               </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

@@ -101,7 +101,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">Call Us</h3>
-                      <p className="text-gray-600">Phone: +1 (555) 123-4567</p>
+                      <p className="text-gray-600">Phone: +91 8200962735</p>
                       <p className="text-gray-600">Toll Free: 1-800-FRINTOR</p>
                     </div>
                   </div>

@@ -8,7 +8,13 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-brand-red via-brand-blue to-brand-cyan bg-clip-text text-transparent">Frintor</h3>
+            
+          <img
+              src='/logo.svg'
+              alt="Logo"
+              className="h-20 w-auto scale-[2] -translate-y-2 filter invert brightness-100"
+              
+              />  
             <p className="text-gray-300 mb-4">Where friendship meets mentoring to guide your career journey.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">
