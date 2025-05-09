@@ -3,86 +3,65 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
-const AlwaysShowLoaderAnimation = () => {
+const TracingLoaderAnimation = () => {
   const [show, setShow] = useState(true);
-  const loaderRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef<HTMLHeadingElement | null>(null);
-  const handsRef = useRef<HTMLDivElement | null>(null);
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const pathRefs = useRef<SVGPathElement[]>([]);
-
-  // Reset path refs array
-  pathRefs.current = [];
-
-  // Add to the refs array
-  const addToPathRefs = (el: SVGPathElement | null) => {
-    if (el && !pathRefs.current.includes(el)) {
-      pathRefs.current.push(el);
-    }
-  };
+  const loaderRef = useRef(null);
+  const svgRef = useRef(null);
+  const pathRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    // Fixed animation duration - always shows for 3 seconds
-    const totalDuration = 3; // in seconds
-    
+    if (!svgRef.current || !pathRef.current || !textRef.current) return;
+
+    // Get path length for animation
+    const path = pathRef.current;
+    const pathLength = path.getTotalLength();
+
+    // Set initial state - path is invisible
+    gsap.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength,
+      fill: "rgba(255, 206, 50, 0)",  // Start with transparent fill
+      stroke: "#FFCE32",
+      strokeWidth: 4
+    });
+
     // Create animation timeline
     const tl = gsap.timeline({
       onComplete: () => {
-        // Fade out the entire loader
+        // After animation completes, fade out the entire loader
         gsap.to(loaderRef.current, {
           opacity: 0,
           duration: 0.8,
+          delay: 0.5,
           onComplete: () => setShow(false)
         });
       }
     });
 
-    // SVG path animation
-    if (pathRefs.current.length) {
-      pathRefs.current.forEach(path => {
-        gsap.set(path, { 
-          strokeDasharray: path.getTotalLength(),
-          strokeDashoffset: path.getTotalLength(),
-          opacity: 1
-        });
-      });
-      
-      tl.to(pathRefs.current, {
-        strokeDashoffset: 0,
-        duration: totalDuration * 0.4, // 40% of total time
-        stagger: 0.1,
-        ease: "power2.inOut"
-      });
-    }
+    // Hide text initially
+    gsap.set(textRef.current, { opacity: 0, y: 0, x: 15 });
 
-    // Initial state for text
-    gsap.set(textRef.current, { opacity: 0, y: 20 });
-
-    // Animate text after hands
-    tl.to(textRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: totalDuration * 0.25, // 25% of total time
-      ease: "power3.out"
-    })
-    
-    // Add a gentle glow effect
-    .to(handsRef.current, {
-      filter: "drop-shadow(0 0 8px rgba(255, 215, 0, 0.7))",
-      duration: totalDuration * 0.2, // 20% of total time
-      repeat: 1,
-      yoyo: true,
+    // Animate the path tracing
+    tl.to(path, {
+      strokeDashoffset: 0,
+      duration: 2.5,
       ease: "power2.inOut"
-    }, "-=0.4")
-    
-    // Final subtle animation
-    .to(svgRef.current, {
-      scale: 1.05,
-      duration: totalDuration * 0.15, // 15% of total time
-      yoyo: true,
-      repeat: 1,
-      ease: "power1.inOut"
-    }, "-=0.3");
+    })
+      // Fill the path after tracing
+      .to(path, {
+        fill: "#FFCE32",
+        duration: 1,
+        ease: "power2.inOut"
+      }, "-=0.5")
+      // Fade in text
+      .to(textRef.current, {
+        opacity: 1,
+        y: -80,
+        x: 15,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.8");
 
   }, []);
 
@@ -90,65 +69,35 @@ const AlwaysShowLoaderAnimation = () => {
   if (!show) return null;
 
   return (
-    <div 
+    <div
       ref={loaderRef}
       className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50"
     >
       <div className="flex flex-col items-center space-y-8">
-        <div 
-          ref={handsRef} 
-          className="w-40 h-40"
-        >
-          <svg 
+        <div className="w-48 h-48">
+          <svg
             ref={svgRef}
-            viewBox="0 0 100 100" 
+            viewBox="0 0 518 346"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
           >
-            {/* Left hand */}
             <path
-              ref={addToPathRefs}
-              d="M35,50 C35,42 38,35 45,30 C48,28 50,30 50,32 L50,65"
-              fill="none"
-              stroke="#D4AF37"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity="0"
-            />
-            
-            {/* Right hand */}
-            <path
-              ref={addToPathRefs}
-              d="M65,50 C65,42 62,35 55,30 C52,28 50,30 50,32 L50,65"
-              fill="none"
-              stroke="#D4AF37"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity="0"
-            />
-            
-            {/* Palm base */}
-            <path
-              ref={addToPathRefs}
-              d="M35,50 C35,58 40,65 50,65 C60,65 65,58 65,50"
-              fill="none"
-              stroke="#D4AF37"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity="0"
+              ref={pathRef}
+              d="M117.683 13.7703C111.896 22.8946 106.12 35.2326 104.842 41.1846C101.363 57.4183 100.381 57.8867 88.4843 48.9829C76.3771 39.924 61.008 31.7778 49.0833 28.0992C41.8638 25.8741 41.3402 26.7283 41.447 40.5818C41.509 48.759 44.3679 63.5873 47.8054 73.5349L54.0537 91.6182H44.4196C32.8772 91.6182 0 98.3796 0 100.756C0 101.679 4.495 108.913 9.98889 116.832C37.2172 156.078 65.3239 167.303 109.557 156.594C127.992 152.13 136.217 146.729 124.575 146.729C120.342 146.729 109.471 142.975 100.416 138.387C78.0856 127.068 49.3933 95.0626 61.5798 95.0626C68.9337 95.0626 90.303 106.261 101.191 115.822L113.081 126.262L106.485 108.902C99.9578 91.7284 97.4812 64.042 102.472 64.0867C107.573 64.1315 121.806 88.9005 125.836 104.742L129.945 120.896L132.559 108.84C135.89 93.4782 145.903 73.6278 153.498 67.3245C158.968 62.7847 159.281 63.9076 157.89 83.0553C157.063 94.3944 153.75 108.951 150.526 115.399C142.566 131.322 142.924 131.477 156.447 117.958C167.345 107.06 197.849 91.9833 201.538 95.6723C204.71 98.8481 185.879 120.469 170.28 131.56C161.524 137.784 149.854 143.867 144.346 145.076C122.226 149.936 141.766 156.983 177.389 156.99C207.152 156.997 242.854 134.319 258.189 105.668C261.578 99.3337 260.868 97.9904 252.443 94.7802C247.16 92.7652 235.083 90.516 225.611 89.7823C216.139 89.0486 208.079 88.3873 207.703 88.3115C207.328 88.2357 209.264 82.797 212.009 76.2284C214.754 69.6599 217 55.6031 217 44.9976C217 26.5802 216.649 25.819 209.25 28.1061C194.677 32.6114 177.392 42.7209 169.139 51.5662C160.435 60.8903 155.024 60.6492 154.966 50.9427C154.928 44.2295 140.988 13.8874 133.369 3.92608C128.416 -2.54603 127.775 -2.14304 117.683 13.7703ZM217.933 167.272C183.947 182.7 179.325 228.139 209.546 249.66C214.978 253.528 231.663 259.996 246.626 264.037C281.291 273.395 289.333 278.462 289.333 290.941C289.333 304.557 278.662 312.776 258.454 314.718C242.427 316.258 240.474 315.559 229.142 304.227C222.463 297.548 217 289.429 217 286.181C217 281.097 214.74 280.618 200.639 282.716C191.642 284.056 183.641 285.771 182.866 286.529C178.891 290.404 191.676 318.521 201.724 327.997C221.722 346.858 269.204 351.867 296.109 337.955C319.662 325.775 331.548 298.757 324.181 274.16C318.16 254.062 301.671 241.937 268.253 233.037C233.258 223.716 223.889 218.226 223.889 207.048C223.889 196.167 232.955 191.507 254.128 191.507C271.319 191.507 278.742 196.071 283.536 209.59C285.197 214.278 289.63 215.618 303.452 215.618H321.236L319.186 202.994C316.627 187.222 299.109 168.526 282.596 163.938C263.001 158.492 233.971 159.99 217.933 167.272ZM404.722 165.688C348.891 185.445 333.054 276.664 377.694 321.363C404.23 347.933 450.213 353.489 490.592 335.006C518.227 322.355 518.544 321.721 517.3 281.693L516.209 246.618H478.55H440.889V262.118V277.618H461.556H482.222V289.281C482.222 299.349 480.476 301.774 469.443 307.01C425.389 327.914 389.222 303.414 389.222 252.667C389.222 216.045 404.519 195.117 433.318 192.351C453.186 190.443 470.184 197.773 476.126 210.813C479.687 218.629 481.396 219.231 494.057 217.148C516.563 213.441 517.49 212.139 509.344 195.675C497.354 171.443 475.337 160.4 439.515 160.659C427.955 160.741 412.3 163.004 404.722 165.688ZM117.111 227.45C117.111 303.596 114.049 315.314 94.1057 315.455C84.3992 315.521 75.9569 306.924 73.4562 294.424C71.8718 286.501 69.6536 284.517 62.4306 284.555C36.5938 284.69 32.8049 291.913 44.7502 318.239C53.7058 337.965 75.3782 348.329 101.27 345.264C119.88 343.059 131.268 336.418 142.731 321.08C149.299 312.293 149.913 306.031 150.884 237.766L151.934 163.952H134.523H117.111V227.45Z"
+              fill="transparent"
             />
           </svg>
         </div>
-        <h1 
+        <h1
           ref={textRef}
-          className="text-4xl font-light text-center text-amber-700"
-          style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.1)" }}
+          className="text-5xl text-md text-center text-[#FFCE32] animate-fadeIn"
+          style={{fontFamily: ' "Cal Sans", sans-serif'}}
         >
-          Jai Jinendra
+          JAI JINENDRA
         </h1>
       </div>
     </div>
   );
 };
 
-export default AlwaysShowLoaderAnimation;
+export default TracingLoaderAnimation;
