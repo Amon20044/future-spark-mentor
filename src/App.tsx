@@ -13,7 +13,6 @@ import Swup from 'swup';
 import AlwaysShowLoaderAnimation from "./components/Loader";
 
 const queryClient = new QueryClient();
-const swup = new Swup();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
