@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Home, List, Search, Mail } from 'lucide-react';
 import { Button } from './ui/button';
@@ -8,6 +8,43 @@ const NavBar: React.FC = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
+  // Add the styles to the document head on component mount
+  useEffect(() => {
+    // Create a style element
+    const styleEl = document.createElement('style');
+    const cssText = `
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .animated-gradient-border {
+        position: relative;
+      }
+      
+      .animated-gradient-border::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, var(--brand-blue, #0070f3), var(--brand-cyan, #00d4ff), var(--brand-blue, #0070f3));
+        background-size: 200% 100%;
+        animation: gradientMove 3s ease infinite;
+      }
+    `;
+    
+    styleEl.textContent = cssText;
+    document.head.appendChild(styleEl);
+    
+    // Clean up
+    return () => {
+      document.head.removeChild(styleEl);
+    };
+  }, []);
+  
   const navItems = [
     { label: 'Home', path: '/', icon: <Home className="h-4 w-4 mr-1" /> },
     { label: 'Services', path: '/services', icon: <List className="h-4 w-4 mr-1" /> },
@@ -16,7 +53,7 @@ const NavBar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white shadow-sm sticky top-0 z-50 animated-gradient-border" style={{ position: 'sticky' }}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center">
