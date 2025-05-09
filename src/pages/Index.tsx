@@ -8,7 +8,6 @@ import FeaturesSection from '../components/FeaturesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import CtaSection from '../components/CtaSection';
 import PartnersSection from '../components/PartnersSection';
-
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">

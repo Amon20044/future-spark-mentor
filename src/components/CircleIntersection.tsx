@@ -13,11 +13,11 @@ const CircleIntersection: React.FC = () => {
           </p>
         </div>
         
-        <div className="relative min-h-[400px] my-12 max-md:scale-75">
+        <div className="relative min-h-[400px] my-24 max-md:scale-75">
           {/* Circles Container */}
           <div className="relative translate-y-20 inset-0 flex items-center justify-center">
             {/* Circle 1: My Interest */}
-            <div className="circle-intersection w-64 h-64 bg-brand-red/20 border-2 border-brand-red absolute transform -translate-x-2/4">
+            <div className="circle-intersection w-80 h-80 bg-brand-red/20 border-2 border-brand-red absolute transform -translate-x-1/3">
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                 <div className="w-16 h-16 bg-brand-red/30 rounded-full flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,7 +30,7 @@ const CircleIntersection: React.FC = () => {
             </div>
             
             {/* Circle 2: My Skills */}
-            <div className="circle-intersection w-64 h-64 bg-brand-blue/20 border-2 border-brand-blue absolute transform translate-x-2/4">
+            <div className="circle-intersection w-80 h-80 bg-brand-blue/20 border-2 border-brand-blue absolute transform translate-x-1/3">
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                 <div className="w-16 h-16 bg-brand-blue/30 rounded-full flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +43,7 @@ const CircleIntersection: React.FC = () => {
             </div>
             
             {/* Circle 3: My Stars */}
-            <div className="circle-intersection w-64 h-64 bg-brand-cyan/20 border-2 border-brand-cyan absolute transform translate-y-3/4">
+            <div className="circle-intersection w-80 h-80 bg-brand-cyan/20 border-2 border-brand-cyan absolute transform translate-y-2/3">
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                 <div className="w-16 h-16 bg-brand-cyan/30 rounded-full flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,8 +56,8 @@ const CircleIntersection: React.FC = () => {
             </div>
 
             {/* Intersection Label */}
-            <div className="absolute bg-white p-4 rounded-full translate-y-12 shadow-lg z-10">
-              <div className="w-8 h-8 bg-gradient-to-br from-brand-red via-brand-blue to-brand-cyan rounded-full flex items-center justify-center">
+            <div className="absolute bg-white p-4 rounded-full translate-y-20 shadow-lg z-10">
+              <div className="w-12 h-12 bg-gradient-to-br from-brand-red via-brand-blue to-brand-cyan rounded-full flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>

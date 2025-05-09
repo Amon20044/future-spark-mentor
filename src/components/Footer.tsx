@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
               className="h-20 w-auto scale-[2] -translate-y-2 filter invert brightness-100"
               
               />  
-            <p className="text-gray-300 mb-4">Where friendship meets mentoring to guide your career journey.</p>
+            <p className="text-gray-300 mb-4">Where friendly mentorship meets to guide your career journey.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">
                 <span className="sr-only">Facebook</span>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
               <p className="mb-2">123 Career Street</p>
               <p className="mb-2">Mentor City, MC 12345</p>
               <p className="mb-2">Email: info@frintor.com</p>
-              <p>Phone: +1 (555) 123-4567</p>
+              <p>Phone: +91 8200962735</p>
             </address>
           </div>
         </div>
