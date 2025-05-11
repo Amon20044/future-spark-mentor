@@ -63,7 +63,7 @@ const NavBar: React.FC = () => {
               className="h-12 w-auto scale-[3] translate-y-2"
             />
           </Link>
-
+      
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
@@ -79,6 +79,7 @@ const NavBar: React.FC = () => {
             <Button className="ml-4 bg-brand-blue hover:bg-brand-blueLight">
               Get Started
             </Button>
+            
           </div>
 
           {/* Mobile menu button */}
@@ -125,6 +126,7 @@ const NavBar: React.FC = () => {
               </Button>
             </div>
           </div>
+         
         </div>
       </div>
     </nav>

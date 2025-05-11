@@ -1,17 +1,16 @@
 
 import React from 'react';
 import { Button } from './ui/button';
-
 const HeroSection: React.FC = () => {
   return (
     <div className="relative overflow-hidden bg-brand-light">
-      <div className="container mx-auto px-4 py-20 lg:py-32">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left order-last lg:order-first">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="block">Discover Your</span>
-              <span className="text-brand-blue">Perfect Career Path</span>
-            </h1>
+          <div className="text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight pb-6">
+                <span className="block">Discover Your</span>
+                <span className="block text-brand-blue">Perfect Career Path</span>
+              </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-lg">
               Guiding students through personalized career assessment using AI, astrology, and expert counseling to unlock their true potential.
             </p>
@@ -24,7 +23,7 @@ const HeroSection: React.FC = () => {
               </Button>
             </div>
           </div>
-          
+
           <div className="relative order-first lg:order-last">
             <div className="relative z-10 w-full h-full">
               {/* Hero image goes here */}
@@ -47,14 +46,14 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Decorative elements */}
             <div className="absolute top-1/4 -left-12 w-24 h-24 bg-brand-yellow/30 rounded-full blur-xl"></div>
             <div className="absolute bottom-1/4 -right-12 w-32 h-32 bg-brand-cyan/30 rounded-full blur-xl"></div>
           </div>
         </div>
       </div>
-      
+
       {/* Abstract Shape */}
       <div className="hidden lg:block absolute -bottom-24 -left-24 w-64 h-64 bg-brand-red/10 rounded-full blur-3xl"></div>
     </div>

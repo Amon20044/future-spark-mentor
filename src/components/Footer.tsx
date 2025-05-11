@@ -8,13 +8,20 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            
-          <img
-              src='/logo.svg'
-              alt="Logo"
-              className="h-20 w-auto scale-[2] -translate-y-2 filter invert brightness-100"
-              
-              />  
+            <div className='flex flex-row items-center'>
+              <img
+                src='/logo.svg'
+                alt="Logo"
+                className="h-20 w-auto scale-[2] -translate-y-2 filter invert brightness-100"
+
+              />
+
+              <img
+                src="/Logo-v2.svg"
+                alt="Logo"
+                className="h-20 w-auto -translate-y-6 filter invert brightness-100"
+              />
+            </div>
             <p className="text-gray-300 mb-4">Where friendly mentorship meets to guide your career journey.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">
@@ -37,7 +44,7 @@ const Footer: React.FC = () => {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -47,7 +54,7 @@ const Footer: React.FC = () => {
               <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
@@ -57,7 +64,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-300 hover:text-white">Success Stories</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-white font-semibold mb-4">Contact Us</h3>
             <address className="not-italic text-gray-300">
@@ -68,7 +75,7 @@ const Footer: React.FC = () => {
             </address>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
           <p>&copy; {new Date().getFullYear()} Frintor. All rights reserved.</p>
         </div>
